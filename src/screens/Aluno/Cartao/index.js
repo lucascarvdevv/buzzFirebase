@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, SafeAreaView, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import { Container } from './style';
 
-import Onibus from '../../img/Onibus.svg';
+import Onibus from '../../../img/Onibus.svg';
 
 import Icon from 'react-native-vector-icons/Entypo';
 

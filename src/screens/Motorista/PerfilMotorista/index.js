@@ -2,14 +2,13 @@ import React from 'react';
 import { View,  TouchableOpacity, Text, Image, TextInput, ScrollView} from 'react-native';
 import { Container } from './style';
 
-import Onibus from '../../img/Onibus.svg';
+import Onibus from '../../../img/Onibus.svg';
 import Icon from 'react-native-vector-icons/Entypo';
 
 import ImagePicker from 'react-native-image-picker';
 
-import { log } from 'react-native-reanimated';
 
-export default function Perfil({navigation}){
+export default function PerfilMotorista({navigation}){
 
 /*function imagePickerCallback(data){
   console.log(data)
@@ -33,18 +32,17 @@ export default function Perfil({navigation}){
                   {/*<Text style={{fontSize: 12,paddingHorizontal: 3, borderWidth: 1, borderRadius: 5, textAlign:"center", top: 20, marginBottom: 21}}>Selecionar foto</Text>*/}
                   </TouchableOpacity>
 
-                  <Text style={Container.name}>Matheus Silva </Text>
-                  <Text style={Container.userInfo}>matheus.morsc@gmail.com</Text>
-                  <Text style={Container.userInfo}>Pedralva </Text>
+                  <Text style={Container.name}>José Silva</Text>
+                  <Text style={Container.userInfo}>jose.silva@gmail.com</Text>
+                  <Text style={Container.userInfo}>Itajubá</Text>
             </View>
             {/*<Text style={{color: "#6558f5", textAlign: 'center', bottom: 50, fontSize: 15}}>Centro Universitário de Itajubá - FEPI </Text>*/}
           </View>
             <View style={Container.info}>
-              <Text style={Container.Texto}>Faculdade:<TextInput style={Container.Input}>FEPI</TextInput></Text>
-              
-              <Text style={Container.Texto}>Curso:<TextInput style={Container.Input}>Sistemas de Informação</TextInput></Text>
-              <Text style={Container.Texto}>Período:<TextInput style={Container.Input}>5º Período</TextInput></Text>
-              <Text style={Container.Texto}>Dias de uso:<TextInput style={Container.Input}>Ter/Qua/Qui</TextInput></Text>
+              <Text style={Container.Texto}>Empresa:<TextInput style={Container.Input}>X</TextInput></Text>
+              <Text style={Container.Texto}>Ônibus:<TextInput style={Container.Input}>Y</TextInput></Text>
+              <Text style={Container.Texto}>.. : <TextInput style={Container.Input}>..</TextInput></Text>
+              <Text style={Container.Texto}>Dias de uso:<TextInput style={Container.Input}>Seg/Ter/Qua/Qui/Sex</TextInput></Text>
             </View>
             
         </ScrollView>

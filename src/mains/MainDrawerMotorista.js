@@ -5,13 +5,13 @@ import { TouchableRipple, Switch, Drawer } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Cartao from '../screens/Cartao';
-import Perfil from '../screens/Perfil';
-import Scanner from '../screens/Scanner';
+import PerfilMotorista from '../screens/Motorista/PerfilMotorista';
+import ListaUsuarios from '../screens/Motorista/ListaUsuarios';
+import Leitor from '../screens/Motorista/Leitor';
 
 const Draweer = createDrawerNavigator();
 
-function DrawerRoutes() {
+function DrawerRoutesDois() {
   return (      
       <Draweer.Navigator 
       screenOptions={{
@@ -22,15 +22,15 @@ function DrawerRoutes() {
       
         headerShown: false,
       }}
-      drawerContent={(props) => <CustomDrawerContent {...props} />} initialRouteName="Perfil" >
+      drawerContent={(props) => <CustomDrawerContent {...props} />} initialRouteName="PerfilMotorista" >
 
-        <Draweer.Screen name='Perfil ' component={Perfil} />
-        <Draweer.Screen name='Cartão Virtual'  component={Cartao} /> 
-        <Draweer.Screen name='Scanner' component={Scanner} /> 
+        <Draweer.Screen name='Perfil ' component={PerfilMotorista} options={{swipeEnabled: false}}/>
+        <Draweer.Screen name='Leitor' component={Leitor} options={{swipeEnabled: true}}/> 
+        <Draweer.Screen name='Usuários' component={ListaUsuarios} options={{swipeEnabled: false}}/> 
       </Draweer.Navigator>
   );
 }
-export default DrawerRoutes;
+export default DrawerRoutesDois;
 
 function CustomDrawerContent(props) {
   return (
@@ -48,7 +48,7 @@ function CustomDrawerContent(props) {
           />
       </Drawer.Section>
 
-      <Drawer.Section title='Preferences' style={{borderTopColor: '#f4f4f4', borderTopWidth: 1}}>
+      <Drawer.Section title='Preferences'>
           <TouchableRipple>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6, paddingHorizontal: 16}}>
               <Text style={{marginTop: 15,}}>Dark Mode</Text>
@@ -65,7 +65,7 @@ function CustomDrawerContent(props) {
               <Icon name="exit-to-app" size={35} color='#6558f5'/>
             )}
             onPress={() => {
-            props.navigation.navigate('Login');
+            props.navigation.navigate('LoginMotorista');
             }}
           />
       </Drawer.Section>  

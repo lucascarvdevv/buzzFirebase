@@ -4,7 +4,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import Icon from 'react-native-vector-icons/Entypo';
 
 
-export default function Scanner() {
+export default function Scanner({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Ainda não scanneado')
@@ -46,6 +46,11 @@ export default function Scanner() {
   // Return the View
   return (
     <View style={styles.container}>
+      <View>
+       <TouchableOpacity  style={{bottom: 180, right: 165}} onPress={() => navigation.openDrawer()}>
+            <Icon style={{width: 50}} name="menu" size={45} color='#6558f5'/>
+        </TouchableOpacity>
+        </View>
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}

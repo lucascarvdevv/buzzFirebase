@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from './style';
 import { View, TextInput, TouchableOpacity, Text,  Keyboard, Pressable, Alert, ScrollView, Label, Input,  KeyboardAvoidingView, } from "react-native";
-import Onibus from '../../img/Onibus.svg';
+import Onibus from '../../../img/Onibus.svg';
 import { CheckBox } from "react-native-elements";
 import { useState } from "react";
 
@@ -53,6 +53,9 @@ export default function Cadastro({navigation}) {
                     <TextInput style={Container.input} />
 
                     <Text style={Container.Texto}>Senha</Text>
+                    <TextInput style={Container.input}  secureTextEntry={true}/>
+
+                    <Text style={Container.Texto}>Confirmar senha</Text>
                     <TextInput style={Container.input}  secureTextEntry={true}/>
 
                     <Text style={Container.Texto}>Faculdade</Text>

@@ -2,7 +2,7 @@ import React from "react";
 import { View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Text, Keyboard, Pressable } from "react-native";
 import { Container } from './style';
 
-import Onibus from '../../img/Onibus.svg';
+import Onibus from '../../../img/Onibus.svg';
 
 
 export default function Login({ navigation }) {
@@ -20,6 +20,14 @@ export default function Login({ navigation }) {
         navigation.reset({
             index: 0,
             routes: [{ name: "Perfil" }]
+        })
+    }
+
+    const clicouLoginMotorista = () => {
+        /*navigation.navigate('Cartao')*/
+        navigation.reset({
+            index: 0,
+            routes: [{ name: "LoginMotorista" }]
         })
     }
 
@@ -47,7 +55,7 @@ export default function Login({ navigation }) {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={[Container.textoCadastro, {bottom: 10}]} onPress={() => clicouLoginMotorista()}>
-                            <Text style={{ color: "#6558f5" }}>Fazer login como motorista</Text>
+                            <Text style={{ color: "#6558f5" }}>Fazer login como<Text style={{fontWeight: 'bold'}}> Motorista</Text></Text>
                         </TouchableOpacity>
                     </View>
                 </View>
