@@ -8,6 +8,13 @@ export const Container = StyleSheet.create(
             backgroundColor: "#fff",
             justifyContent: "center",
         },
+        check:{
+            width: "80%",
+            flexDirection: 'row',
+            borderColor: '#ccc',
+            borderWidth: 1,
+            borderRadius: 10
+        },
         TextoTitulo:{
             fontSize: 33,
             marginTop: 80,

@@ -68,12 +68,15 @@ export default function Cadastro({navigation}) {
                     <TextInput style={Container.input} />
 
                     <Text style={[Container.Texto, {marginBottom: 15}]}>Dias de Uso:</Text>
-                   
-                    <CheckBox title="Segunda-feira" checked={segunda} onPress={() => setSegunda(!segunda)} /> 
-                    <CheckBox title="Terça-feira" checked={terca} onPress={() => setTerca(!terca)} /> 
-                    <CheckBox title="Quarta-feira" checked={quarta} onPress={() => setQuarta(!quarta)} /> 
-                    <CheckBox title="Quinta-feira" checked={quinta} onPress={() => setQuinta(!quinta)} /> 
-                    <CheckBox title="Sexta-feira" checked={sexta} onPress={() => setSexta(!sexta)} /> 
+                    <View  style={[Container.check]}>
+                       <ScrollView horizontal={true}>
+                            <CheckBox title="Segunda-feira" checked={segunda} onPress={() => setSegunda(!segunda)} /> 
+                            <CheckBox title="Terça-feira" checked={terca} onPress={() => setTerca(!terca)} /> 
+                            <CheckBox title="Quarta-feira" checked={quarta} onPress={() => setQuarta(!quarta)} /> 
+                            <CheckBox title="Quinta-feira" checked={quinta} onPress={() => setQuinta(!quinta)} /> 
+                            <CheckBox title="Sexta-feira" checked={sexta} onPress={() => setSexta(!sexta)} /> 
+                        </ScrollView>
+                    </View>
 
                     <TouchableOpacity style={Container.botao} onPress={ () => {clicou()}}>
                         <Text style={Container.botaoText}>Cadastrar</Text>
