@@ -11909,6 +11909,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+route@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/route/-/route-0.2.5.tgz#edd77b83909187266c7674e2938fd994fba009ec"
+  integrity sha1-7dd7g5CRhyZsdnTik4/ZlPugCew=
+
 router-ips@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/router-ips/-/router-ips-1.0.0.tgz"

@@ -4,7 +4,8 @@ import { View, TextInput, TouchableOpacity, Text, Keyboard, Pressable, Alert, Sc
 import Onibus from '../../../img/Onibus.svg';
 import { CheckBox, Input } from "react-native-elements";
 import { useState, useEffect } from "react";
-import { db } from "../../../config/firebase-config";
+import firebase from '../../../config/firebase-config'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {
   collection,
   getDocs,
@@ -12,16 +13,16 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  arrayUnion,
 } from "firebase/firestore";
+import { useRoute } from "@react-navigation/native";
 
 
 
-const showDialog = () => setVisible(true);
-const hideDialog = () => setVisible(false);
 
-export default function Cadastro({navigation}) {
-    const [users, setUsers] = useState([]);
-    const usersCollectionRef = collection(db, "users");
+export default function Cadastro({navigation, route} ) {
+    const database = firebase.firestore()
+    
 
     const clicouLogin = () => {
         navigation.navigate("Login")
@@ -49,9 +50,7 @@ export default function Cadastro({navigation}) {
     const [errorPeriodo, setErrorPeriodo] = useState(null)
     const [isLoading, setLoading] = useState(false)
 
-    const createUser = async () => {
-        await addDoc(usersCollectionRef, { nome: nome, email: email, curso: curso, faculdade: faculdade, periodo: Number(periodo)  });
-      }
+    
     const validar = () => {
         let error = false
         setErrorPeriodo(null)
@@ -67,11 +66,7 @@ export default function Cadastro({navigation}) {
             error = true
         }
 
-        if (nome == null || nome == '' ) {
-            setErrorNome("Preencha com seu nome")
-            error = true
-        }
-
+       
         if (password == null && password != cpass) {
             setErrorPassword("Preencha com uma senha válida")
             error = true
@@ -82,44 +77,28 @@ export default function Cadastro({navigation}) {
             error = true
         }
 
-        if (faculdade == '' || periodo == null ) {
-            setErrorFaculdade("Preencha com o nome da faculdade")
-        }
-        if (curso == null || curso == '' ) {
-            setErrorCurso("Preencha com o nome do curso")
-        }
-        if (periodo == null || periodo == '') {
-            setErrorPeriodo("Preencha com o período atual")
-        }
         return !error
     }
 
+    const auth = getAuth();
+
+    function createUser () {
+createUserWithEmailAndPassword( auth, email, password)
+  .then((userCredential) => {
+    
+    let user = userCredential.user;
+    navigation.navigate("CriarPerfil", {idUser: user.uid})
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  
+  });
+}
+
+       
 
     
-
-
-    const hobbies = []
-
-    const clicou = () => {
-        if (segunda === true) {
-            hobbies.push('segunda')
-        }
-        if (terca === true) {
-            hobbies.push('terca')
-        }
-        if (quarta === true) {
-            hobbies.push('quarta')
-        }
-        if (quinta === true) {
-            hobbies.push('quinta')
-        }
-        if (sexta === true) {
-            hobbies.push('sexta')
-        }
-
-        Alert.alert("Cadastro", "Foi realizado com sucesso!");
-    }
-
     {
 
 
@@ -131,16 +110,7 @@ export default function Cadastro({navigation}) {
                         <View style={Container.InputArea}>
                             <View style={Container.InputLogin}>
 
-                                <Text style={Container.Texto}>Nome</Text>
-                                <Input style={Container.TextInput}
-
-                                    onChangeText={value => {
-                                        setErrorNome(null)
-                                        setNome(value)
-
-                                    }}
-                                    errorMessage={errorNome}
-                                />
+                                
 
                                 <Text style={Container.Texto}>Email</Text>
                                 <Input style={Container.TextInput}
@@ -174,46 +144,9 @@ export default function Cadastro({navigation}) {
                                     errorMessage={errorCPassword}
                                 />
 
-                                <Text style={Container.Texto}>Faculdade</Text>
-                                <Input style={Container.TextInput}
-                                    onChangeText={value => {
-                                        setErrorFaculdade(null)
-                                        setFaculdade(value)
-                                    }}
-                                    errorMessage={errorFaculdade}
-                                />
+                               
 
-                                <Text style={Container.Texto}>Curso</Text>
-                                <Input style={Container.TextInput}
-                                    onChangeText={value => {
-                                        setErrorCurso(null)
-                                        setCurso(value)
-                                    }}
-                                    errorMessage={errorCurso}
-                                />
-
-                                <Text style={Container.Texto}>Período</Text>
-                                <Input style={Container.TextInput}
-                                    keyboardType="numeric"
-                                    onChangeText={value => {
-                                        setErrorPeriodo(null)
-                                        setPeriodo(value)
-                                    }}
-                                    errorMessage={errorPeriodo}
-                                />
-
-                                <Text style={[Container.Texto, { marginBottom: 15 }]}>Dias de Uso:</Text>
-                                <View style={[Container.check]}>
-                                    <ScrollView horizontal={true}>
-                                        <CheckBox title="Segunda-feira" checked={segunda} onPress={() => setSegunda(!segunda)} />
-                                        <CheckBox title="Terça-feira" checked={terca} onPress={() => setTerca(!terca)} />
-                                        <CheckBox title="Quarta-feira" checked={quarta} onPress={() => setQuarta(!quarta)} />
-                                        <CheckBox title="Quinta-feira" checked={quinta} onPress={() => setQuinta(!quinta)} />
-                                        <CheckBox title="Sexta-feira" checked={sexta} onPress={() => setSexta(!sexta)} />
-                                    </ScrollView>
-                                </View>
-
-                                <TouchableOpacity style={Container.botao} onPress={createUser}>
+                                <TouchableOpacity style={Container.botao} onPress={() =>{createUser()}}>
                                     <Text style={Container.botaoText}>Cadastrar</Text>
                                 </TouchableOpacity>
 
