@@ -11,9 +11,7 @@ import { log } from 'react-native-reanimated';
 
 export default function Perfil({navigation}){
 
-/*function imagePickerCallback(data){
-  console.log(data)
-}*/
+
 
     return(
         <View style={Container.container}>

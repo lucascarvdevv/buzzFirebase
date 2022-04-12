@@ -30,7 +30,7 @@ function StackRoutes() {
       <Stack.Screen name="LoginMotorista" component={LoginMotorista}/>
       <Stack.Screen name="Cadastro" component={Cadastro}/>
       <Stack.Screen name="PerfilMotorista" component={DrawerRoutesMotorista}/>
-      <Stack.Screen name="ListaUsuarios" component={ListaUsuarios}/>
+     
       <Stack.Screen name="Scanner" component={Scanner}/>
       <Stack.Screen name="Cartao" component={DrawerRoutesAluno}/>
       <Stack.Screen name="Perfil" component={DrawerRoutesAluno}/>

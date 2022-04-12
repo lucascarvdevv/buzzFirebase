@@ -9,7 +9,7 @@ export const Container = StyleSheet.create(
             justifyContent: "center",
         },
         check:{
-            width: "80%",
+            width: "100%",
             flexDirection: 'row',
             borderColor: '#ccc',
             borderWidth: 1,
@@ -22,10 +22,11 @@ export const Container = StyleSheet.create(
             color:"#6558f5",
         },
         InputArea: {
-            /*flex: 1,*/
-            /*backgroundColor: "#fff",*/
-            margin: 25,
+            height:'100%',
+            width:'95%',
+            
             alignItems: "center",
+            backgroundColor:"#fff"
             
         },
         input:{
@@ -43,7 +44,9 @@ export const Container = StyleSheet.create(
             
           },
         InputLogin:{
+            marginTop:"5%",
             alignItems: "center",
+            width:'80%'
                  
         },
         Texto:{
@@ -51,7 +54,7 @@ export const Container = StyleSheet.create(
             color:"#6558f5",
             fontSize:22,
             /*marginRight: 200,*/
-            marginTop: 20,
+            marginTop: 10,
             textAlign: 'auto',
             width: 275,
     
@@ -89,6 +92,14 @@ export const Container = StyleSheet.create(
             color: "#6558f5",
             fontSize: 45,
             flexDirection: "row",
+        },
+        TextInput: {
+            margin: 5,
+            height: 40,
+            width: '100%',
+            backgroundColor: '#fff',
+            borderColor: '#ccc'
+    
         },
     }
 )
